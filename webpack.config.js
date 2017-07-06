@@ -29,7 +29,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env']
-          }
+          },
         }
       },
       {
@@ -39,6 +39,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: extractCSS.extract(['css-loader', 'sass-loader']),
+      },
+      {
+        test: /\.handlebars$/,
+        loader: "handlebars-loader",
+        query: {
+          partialDirs: [
+            path.join(__dirname, 'src', 'html', 'templates', 'partials')
+          ]
+        }
       }
     ]
   },
@@ -47,6 +56,6 @@ module.exports = {
       template: './src/index.html',
     }),
     extractCSS,
-    new UglifyJSPlugin()
+    // new UglifyJSPlugin()
   ]
 };
