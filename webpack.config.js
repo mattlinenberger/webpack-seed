@@ -23,12 +23,22 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      },
+      {
         test: /\.html$/,
         loader: 'html-loader',
       },
       {
         test: /\.scss$/,
-        use: extractCSS.extract([ 'css-loader', 'sass-loader' ]),
+        use: extractCSS.extract(['css-loader', 'sass-loader']),
       }
     ]
   },
