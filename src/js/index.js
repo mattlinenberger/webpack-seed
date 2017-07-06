@@ -1,7 +1,9 @@
 require('../styles/index.scss');
 
-import SampleModel from './models/SampleModel';
+import AppRouter from './AppRouter';
 
-const model = new SampleModel();
+/* create a new app router */
+const router = new AppRouter();
 
-model.sayHello();
+/* start the app router */
+Backbone.history.start();
