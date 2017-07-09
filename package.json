@@ -31,7 +31,9 @@
     "jquery": "^3.2.1",
     "logbone-es6": "^1.2.3",
     "node-sass": "^4.5.3",
+    "pure-css": "^1.0.4",
     "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
