@@ -37,6 +37,10 @@ module.exports = {
         loader: 'html-loader',
       },
       {
+        test: /\.(png|jpeg|gif|svg)$/,
+        loader: "file-loader?name=assets/images/img-[hash:6].[ext]"
+      },
+      {
         test: /\.scss$/,
         use: extractCSS.extract(['css-loader', 'sass-loader']),
       },

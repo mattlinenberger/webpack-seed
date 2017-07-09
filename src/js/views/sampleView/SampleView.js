@@ -8,11 +8,17 @@ const SampleView = Backbone.View.extend({
     console.log('Sample View Created!');
     this.render();
   },
+  events: {
+    'click button': 'sayHello',
+  },
   render: function () {
     console.log('Sample View Rendering!');
 
     const html = template(this.model);
     this.$el.append(html);
+  },
+  sayHello: function() {
+    window.alert(`Hello, ${this.model.name}`);
   }
 });
 
