@@ -9,7 +9,7 @@ const SampleView = Backbone.View.extend({
     this.render();
   },
   events: {
-    'click button': 'sayHello',
+    'click .nameBadge': 'sayHello',
   },
   render: function () {
     console.log('Sample View Rendering!');
@@ -17,8 +17,24 @@ const SampleView = Backbone.View.extend({
     const html = template(this.model);
     this.$el.append(html);
   },
-  sayHello: function() {
-    window.alert(`Hello, ${this.model.name}`);
+  sayHello: e => {
+    const elem = e.currentTarget;
+    const data = elem.dataset;
+    const name = data.name;
+
+    /* toggle active */
+    if (data.isActive === 'true') {
+      data.isActive = false;
+      window.alert(`Goodbye, ${name}`);
+      elem.className = 'nameBadge';
+    } else {
+      data.isActive = true;
+      window.alert(`Hello, ${name}`);
+      elem.className = 'nameBadge active';
+    }
+
+
+    console.log('IsActive %O', data.isActive);
   }
 });
 

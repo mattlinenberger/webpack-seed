@@ -1,9 +1,12 @@
 .nameBadge {
+  cursor: pointer;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   background: blue;
   width: 300px;
   border-radius: 10px;
+  border: 1 px solid #555555;
   color: white;
   padding-bottom: 2em;
   padding-left: 2px;
@@ -19,6 +22,10 @@
     font-size: 1.5em;
     color: #555555;
     padding-top: 10%;
+  }
+
+  &.active {
+    background: green;
   }
 
 }

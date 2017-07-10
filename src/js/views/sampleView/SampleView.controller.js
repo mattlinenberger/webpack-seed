@@ -13,12 +13,22 @@ const SampleController = Backbone.Model.extend({
     new View({
        el: '#root',
        model: {
-         name: 'Scott',
+         people: [
+           {
+             name: 'Scott',
+           },
+           {
+             name: 'Vanessa',
+           },
+           {
+             name: 'Bob'
+           }
+         ],
          img: imgElectronics,
        },
     });
 
-  }
+  },
 });
 
 export default SampleController;
