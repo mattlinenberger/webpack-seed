@@ -1,4 +1,4 @@
-import Backbone from 'backbone'; 
+import Backbone from 'backbone';
 import Logbone from 'logbone-es6';
 
 import View from './SampleView';
@@ -10,22 +10,28 @@ const SampleController = Backbone.Model.extend({
     const logger = Logbone.getLogger('SampleController');
     logger.log('started!');
 
+    /* create the model */
+    const model = new Backbone.Model();
+
+    /* create an array of people */
+    const people = [
+      {
+        name: 'Scott',
+      },
+      {
+        name: 'Vanessa',
+      },
+      {
+        name: 'Bob'
+      }
+    ];
+
+    /* set the people on the model */
+    model.set('people', people);
+
     new View({
-       el: '#root',
-       model: {
-         people: [
-           {
-             name: 'Scott',
-           },
-           {
-             name: 'Vanessa',
-           },
-           {
-             name: 'Bob'
-           }
-         ],
-         img: imgElectronics,
-       },
+      el: '#root',
+      model,
     });
 
   },
