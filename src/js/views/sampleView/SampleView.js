@@ -20,6 +20,7 @@ const SampleView = Backbone.View.extend({
     console.log('Sample View Rendering! %O', this.model);
 
     const html = template(this.model.attributes);
+    this.$el.empty();
     this.$el.append(html);
   },
   addPerson: function(e) {
@@ -28,10 +29,10 @@ const SampleView = Backbone.View.extend({
     console.log('model: %O', this.model);
 
     /* add the person to the model */
-    const people = this.model.get('people');
+    const people = Array.from(this.model.get('people'));
     people.push({name});
 
-    this.model.set({people});
+    this.model.set('people', people);
   },
   sayHello: function(e) {
     /* get the element and the data attribs */

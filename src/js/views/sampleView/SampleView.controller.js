@@ -13,6 +13,10 @@ const SampleController = Backbone.Model.extend({
     /* create the model */
     const model = new Backbone.Model();
 
+    model.on('all', ()=>{
+      console.log('PEOPLE UPDATED!!!');
+    });
+
     /* create an array of people */
     const people = [
       {
