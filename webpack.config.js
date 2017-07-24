@@ -1,52 +1,32 @@
 const path = require('path');
+const pkg = require('./package.json');
+const metadata = require('./metadata.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-// Root helper function
-const root = function (args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-};
-
-const package = require('./package.json');
-
-// Extraction plugin definitions
-const extractCSS = new ExtractTextPlugin(package.name + '[hash].css');
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: './src/js/index.js',
   output: {
-    path: root('dist'),
-    filename: package.name + ".[hash].bundle.js"
+    filename: `${pkg.name}.[hash].js`,
+    path: path.resolve(__dirname, 'dist'),
   },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
-        }
-      },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-      },
-      {
-        test: /\.scss$/,
-        use: extractCSS.extract(['css-loader', 'sass-loader']),
-      }
-    ]
-  },
+  /* PLUGINS */
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      data: metadata,
     }),
-    extractCSS,
-    new UglifyJSPlugin()
-  ]
+  ],
+  /* MODULES */
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 };
