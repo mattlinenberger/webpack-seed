@@ -23,12 +23,40 @@ module.exports = {
   /* MODULES */
   module: {
     rules: [
+      /* javascript */
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env'],
+            },
+          },
+          {
+            loader: 'eslint-loader',
+          },
+        ],
+      },
+      /* CSS */
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
           'css-loader',
           'sass-loader',
+        ],
+      },
+      /* images */
+      {
+        test: /\.(jpg|jpeg|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: './assets/[name].[hash].[ext]',
+            },
+          },
         ],
       },
     ],
