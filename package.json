@@ -18,7 +18,9 @@
     "url": "https://github.com/scott-linenberger/webpack-seed/issues"
   },
   "homepage": "https://github.com/scott-linenberger/webpack-seed#readme",
-  "dependencies": {},
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
@@ -36,6 +38,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "uglify-js": "^3.0.26",
+    "url-loader": "^0.5.9",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.6.1"
   }
