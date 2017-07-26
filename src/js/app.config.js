@@ -1,5 +1,5 @@
 export default {
   LOGGING: {
-    LEVEL: 0,
+    LEVEL: 5,
   },
 };
