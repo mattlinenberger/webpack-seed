@@ -26,9 +26,7 @@ module.exports = {
       filename: `./css/${pkg.name}.[hash].css`,
     }),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: {
-        props: false,
-      },
+      mangle: false,
     }),
   ],
   /* MODULES */
