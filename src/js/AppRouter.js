@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import SampleController from './views/sampleView/SampleView.controller';
+import SampleController from './views/sampleView2/SampleView.controller';
 
 const AppRouter = Backbone.Router.extend({
   routes: {
