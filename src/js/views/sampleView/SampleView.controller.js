@@ -1,13 +1,9 @@
 import Backbone from 'backbone';
-import Logbone from 'logbone-es6';
 
 import View from './SampleView';
 
 const SampleController = Backbone.Model.extend({
   initialize() {
-    const logger = Logbone.getLogger('SampleController');
-    logger.log('started!');
-
     /* create the model */
     const model = new Backbone.Model();
 
