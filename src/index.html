@@ -2,10 +2,32 @@
 <html>
   <head>
     <title>
-      Webpack Seed Project
+      <%= htmlWebpackPlugin.options.title %>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Schema Data -->
+    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.data.schema.name %>">
+    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.data.schema.description %>">
+    <meta itemprop="image" content="<%= htmlWebpackPlugin.options.data.image %>">
+
+     <!-- Open Graph data -->
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.data.openGraph.title %>">
+    <meta property="og:description" content="<%= htmlWebpackPlugin.options.data.openGraph.title %>">
+    <meta property="og:type" content="<%= htmlWebpackPlugin.options.data.openGraph.type %>">
+    <meta property="og:url" content="<%= htmlWebpackPlugin.options.data.url %>">
+    <meta property="og:image" content="<%= htmlWebpackPlugin.options.data.image %>">
+
+    <!--Twitter Card-->
+    <meta name="twitter:card" content="<%= htmlWebpackPlugin.options.data.twitter.cardType %>">
+    <meta name="twitter:site" content="<%= htmlWebpackPlugin.options.data.twitter.creator %>">
+    <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.data.twitter.title %>">
+    <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.data.twitter.description %>">
+    <meta name="twitter:image:src" content="<%= htmlWebpackPlugin.options.data.image %>">
+    <meta name="twitter:domain" content="<%= htmlWebpackPlugin.options.data.url %>">  
+    
 <body>
   <div id='root'></div>
+  <script src="bundle.js"></script>
 </body>
 </html>

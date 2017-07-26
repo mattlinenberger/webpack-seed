@@ -1,15 +1,15 @@
-import CONFIG from '../app.config';
 import Backbone from 'backbone';
 import Logbone from 'logbone-es6';
+import CONFIG from '../app.config';
 
 const LoggableModel = Backbone.Model.extend({
-  initLogger: function(loggerName) {
+  initLogger(loggerName) {
     /* instantiate a logger */
-    this.logger = 
+    this.logger =
       Logbone.getLogger(
-        loggerName, 
+        loggerName,
         CONFIG.LOGGING.LEVEL);
-  }
+  },
 });
 
 export default LoggableModel;

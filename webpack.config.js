@@ -1,68 +1,112 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Root helper function
-const root = function (args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-};
-
-const package = require('./package.json');
-
-// Extraction plugin definitions
-const extractCSS = new ExtractTextPlugin(package.name + '[hash].css');
+const pkg = require('./package.json');
+const metadata = require('./metadata.json');
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: './src/js/index.js',
   output: {
-    path: root('dist'),
-    filename: package.name + ".[hash].bundle.js"
+    filename: `${pkg.name}.[hash].js`,
+    path: path.resolve(__dirname, 'dist'),
   },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          },
-        }
-      },
-      { 
-        test: /\.css$/, 
-        loader: "style-loader!css-loader" },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-      },
-      {
-        test: /\.(png|jpeg|gif|svg)$/,
-        loader: "file-loader?name=assets/images/img-[hash:6].[ext]"
-      },
-      {
-        test: /\.scss$/,
-        use: extractCSS.extract(['css-loader', 'sass-loader']),
-      },
-      {
-        test: /\.handlebars$/,
-        loader: "handlebars-loader",
-        query: {
-          partialDirs: [
-            path.join(__dirname, 'src', 'html', 'templates', 'partials')
-          ]
-        }
-      }
-    ]
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
   },
+  /* PLUGINS */
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      data: metadata,
     }),
-    extractCSS,
-    // new UglifyJSPlugin()
-  ]
+    new ExtractTextPlugin({
+      filename: `./css/${pkg.name}.[hash].css`,
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: {
+        props: false,
+      },
+    }),
+  ],
+  /* MODULES */
+  module: {
+    rules: [
+      /* javascript */
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env'],
+            },
+          },
+          {
+            loader: 'eslint-loader',
+          },
+        ],
+      },
+      /* CSS */
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader',
+          ],
+        }),
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?sourceMap',
+      },
+      {
+        test: /\.handlebars$/,
+        loader: 'handlebars-loader',
+        query: {
+          partialDirs: [
+            path.join(__dirname, 'src', 'html', 'templates', 'partials'),
+          ],
+        },
+      },
+      /* images */
+      {
+        test: /\.(jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: './assets/[name].[hash].[ext]',
+            },
+          },
+        ],
+      },
+      /* font-awesome */
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      },
+      {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+      },
+    ],
+  },
 };

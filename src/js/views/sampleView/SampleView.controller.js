@@ -3,17 +3,15 @@ import Logbone from 'logbone-es6';
 
 import View from './SampleView';
 
-const imgElectronics = require('../../../assets/images/electronics.jpeg');
-
 const SampleController = Backbone.Model.extend({
-  initialize: function () {
+  initialize() {
     const logger = Logbone.getLogger('SampleController');
     logger.log('started!');
 
     /* create the model */
     const model = new Backbone.Model();
 
-    model.on('all', ()=>{
+    model.on('all', () => {
       console.log('PEOPLE UPDATED!!!');
     });
 
@@ -26,18 +24,19 @@ const SampleController = Backbone.Model.extend({
         name: 'Vanessa',
       },
       {
-        name: 'Bob'
-      }
+        name: 'Bob',
+      },
     ];
 
     /* set the people on the model */
     model.set('people', people);
 
-    new View({
+    const view = new View({
       el: '#root',
       model,
     });
 
+    console.log('view: %O', view);
   },
 });
 

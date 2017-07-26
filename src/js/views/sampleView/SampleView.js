@@ -1,10 +1,9 @@
 import Backbone from 'backbone';
-import style from './SampleView.scss';
 
 const template = require('./SampleView.handlebars');
 
 const SampleView = Backbone.View.extend({
-  initialize: function () {
+  initialize() {
     console.log('Sample View Created!');
 
     /* bind the view to the model's change handler */
@@ -16,25 +15,25 @@ const SampleView = Backbone.View.extend({
     'click button': 'addPerson',
     'click .nameBadge': 'sayHello',
   },
-  render: function () {
+  render() {
     console.log('Sample View Rendering! %O', this.model);
 
     const html = template(this.model.attributes);
     this.$el.empty();
     this.$el.append(html);
   },
-  addPerson: function(e) {
+  addPerson() {
     /* get the first input box */
     const name = this.$('input')[0].value;
     console.log('model: %O', this.model);
 
     /* add the person to the model */
     const people = Array.from(this.model.get('people'));
-    people.push({name});
+    people.push({ name });
 
     this.model.set('people', people);
   },
-  sayHello: function(e) {
+  sayHello(e) {
     /* get the element and the data attribs */
     const elem = e.currentTarget;
     const data = elem.dataset;
@@ -52,7 +51,7 @@ const SampleView = Backbone.View.extend({
     }
 
     console.log('IsActive %O', data.isActive);
-  }
+  },
 });
 
 export default SampleView;

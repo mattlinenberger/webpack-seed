@@ -1,0 +1,19 @@
+{
+  "image": "image-value",
+  "url": "http://mywebapp.com",
+  "schema": {
+    "name": "Schema Name",
+    "description": "Schema Description"
+  },
+  "openGraph": {
+    "title": "Open Graph Title",
+    "description": "Open Graph Description",
+    "type": "Open Graph Type"
+  },
+  "twitter": {
+    "cardType": "summary_large_image",
+    "creator": "@myHandle",
+    "title": "Twitter Title",
+    "description": "Twitter Description"
+  }
+}
