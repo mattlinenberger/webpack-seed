@@ -7,9 +7,7 @@ const SampleController = Backbone.Model.extend({
     /* create the model */
     const model = new Backbone.Model();
 
-    model.on('all', () => {
-      console.log('PEOPLE UPDATED!!!');
-    });
+    model.on('all', () => {});
 
     /* create an array of people */
     const people = [
@@ -32,7 +30,7 @@ const SampleController = Backbone.Model.extend({
       model,
     });
 
-    console.log('view: %O', view);
+    this.view = view;
   },
 });
 

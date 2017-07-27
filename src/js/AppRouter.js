@@ -11,10 +11,10 @@ const AppRouter = Backbone.Router.extend({
   view1() {
     /* view1, the default view */
     const controller = new SampleController();
-    console.log('controller: %O', controller);
+    this.controller = controller;
   },
   view2(name) {
-    console.log(`${name} is here!`);
+    this.name = name;
   },
 });
 

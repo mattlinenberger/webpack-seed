@@ -1,14 +1,9 @@
-import LoggableModel from './LoggableModel';
+import Backbone from 'backbone';
 
-const SampleModel = LoggableModel.extend({
-  initialize(loggerName) {
-    /* init the logger */
-    this.initLogger(loggerName);
-
-    this.logger.log('initialized!');
+const SampleModel = Backbone.Model.extend({
+  initialize() {
   },
   sayHello() {
-    console.log('Hello, Backbone!');
     this.set({ a: 'b' });
   },
 });
