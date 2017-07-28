@@ -1,0 +1,27 @@
+.to_do_item {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid black;
+  
+  .title {
+    margin-left: 1em;
+  }
+
+  .complete {
+    color: green;
+  }
+
+  .controls {
+    text-align: right;
+
+    .fa-plus {
+      cursor: pointer;
+    }
+
+    .remove {
+      margin-right: 1em;
+    }
+  }
+
+}
