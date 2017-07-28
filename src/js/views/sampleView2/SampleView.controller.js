@@ -21,13 +21,13 @@ export default class SampleViewController extends LoggableController {
     this.model = new ToDoCollection([
       {
         title: 'Do Laundry',
+        isComplete: true,
       },
       {
         title: 'Other Stuff',
+        isComplete: false,
       },
     ]);
-
-    console.log('%O', this.model.models);
 
     /* construct the view */
     this.view = new View({
@@ -38,14 +38,15 @@ export default class SampleViewController extends LoggableController {
     });
   }
 
-  removeItem(itemId) {
-    this.logger.log('Removing Item! %O', itemId);
-    const toDo = this.model.get(itemId);
-    this.logger.log('ToDo found! %O', toDo.attributes);
-    this.model.remove(itemId);
+  removeItem(toDo) {
+    this.logger.log('Removing Item! %O', toDo);
+    this.model.remove(toDo);
   }
 
-  sayHello() {
-    console.log('Hello, world!');
+  addToDoItem(toDoText) {
+    this.logger.debug('Adding item! %O', toDoText);
+    this.model.add({
+      title: toDoText,
+    });
   }
 }
