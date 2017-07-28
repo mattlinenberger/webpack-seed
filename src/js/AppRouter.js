@@ -11,18 +11,14 @@ const AppRouter = Backbone.Router.extend({
     this.logger.log('SampleService value: %O', SampleService.getProperty());
   },
   routes: {
-    view1: 'view1',
-    'view2/:name': 'view2',
+    view1: 'home',
     /* fallback, default route */
-    '*any': 'view1',
+    '*any': 'home',
   },
-  view1() {
+  home() {
     /* view1, the default view */
     const controller = new ToDoListCtlr();
     this.controller = controller;
-  },
-  view2(name) {
-    this.name = name;
   },
 });
 
