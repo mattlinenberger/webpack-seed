@@ -47,7 +47,7 @@ const SampleView = LoggableView.extend({
     this.$('.item_list').append(toDo.el);
   },
   addToDoItem() {
-    const textBox = this.$('input')[0];
+    const textBox = this.$('input.new')[0];
     const itemText = textBox.value;
 
     this.ctlr.addToDoItem(itemText);
