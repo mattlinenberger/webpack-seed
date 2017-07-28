@@ -2,6 +2,7 @@ import Backbone from 'backbone';
 import LoggableController from '../../modules/LoggableController';
 import View from './ToDoList.view';
 import ToDoModel from '../../models/ToDo.model';
+import SampleService from '../../singletons/Sample.service';
 
 /* bring in style */
 require('./ToDoList.scss');
@@ -10,6 +11,8 @@ export default class SampleViewController extends LoggableController {
   /* constructor */
   constructor() {
     super('ToDoListCtlr');
+
+    this.logger.log('SampleService value: %O', SampleService.getProperty());
 
     /* construct the model, which is a collection of ToDos */
     const ToDoCollection = Backbone.Collection.extend({
