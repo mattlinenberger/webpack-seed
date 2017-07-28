@@ -14,25 +14,41 @@ export default Backbone.View.extend({
 
     /* bind the view to the model's change event */
     /* re-render on change */
-    this.listenTo(this.model, 'change', this.update);
-    this.listenTo(this.model, 'remove', this.remove);
+    this.listenTo(this.model, 'change', this.onUpdate);
+    this.listenTo(this.model, 'remove', this.onRemove);
+    this.listenTo(this.model, 'add', this.onAdd);
+    this.listenTo(this.model, 'destroy', this.onDestroy);
 
     this.render();
   },
   initLogger(loggerName) {
     this.logger = new Logger(loggerName);
   },
-  update() {
+  onAdd() {
     /* default empty method for update, meant to be overridden */
   },
-  remove() {
-    console.log('REMOVED!!!');
-    this.render();
+  onChange() {
+    /* default empty method for update, meant to be overridden */
+  },
+  onUpdate() {
+    /* default empty method for update, meant to be overridden */
+  },
+  onRemove() {
+    /* default empty method for update, meant to be overridden */
   },
   setController(controller) {
     this.controller = controller;
   },
   getLogger(loggerName) {
     return new Logger(`${this.loggerName}:${loggerName}`);
+  },
+  conditionalStyle(element, condition, styleTrue, styleFalse) {
+    if (condition) {
+      element.removeClass(styleFalse);
+      element.addClass(styleTrue);
+    } else {
+      element.removeClass(styleTrue);
+      element.addClass(styleFalse);
+    }
   },
 });
