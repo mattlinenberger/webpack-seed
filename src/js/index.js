@@ -1,6 +1,5 @@
 import Backbone from 'backbone';
 import AppRouter from './AppRouter';
-import style from './views/sampleView/SampleView.scss';
 
 require('../../node_modules/font-awesome/css/font-awesome.css');
 
@@ -18,7 +17,6 @@ const router = new AppRouter();
 Backbone.history.start();
 
 export default {
-  style,
   router,
 };
 

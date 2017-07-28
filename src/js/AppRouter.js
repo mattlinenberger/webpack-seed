@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import SampleController from './views/sampleView2/SampleView.controller';
+import ToDoListCtlr from './views/todoList/ToDoList.controller';
 
 const AppRouter = Backbone.Router.extend({
   routes: {
@@ -10,7 +10,7 @@ const AppRouter = Backbone.Router.extend({
   },
   view1() {
     /* view1, the default view */
-    const controller = new SampleController();
+    const controller = new ToDoListCtlr();
     this.controller = controller;
   },
   view2(name) {

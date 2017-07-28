@@ -1,12 +1,15 @@
 import Backbone from 'backbone';
 import LoggableController from '../../modules/LoggableController';
-import View from './SampleView';
+import View from './ToDoList.view';
 import ToDoModel from '../../models/ToDo.model';
+
+/* bring in style */
+require('./ToDoList.scss');
 
 export default class SampleViewController extends LoggableController {
   /* constructor */
   constructor() {
-    super('SampleViewController');
+    super('ToDoListCtlr');
 
     /* construct the model, which is a collection of ToDos */
     const ToDoCollection = Backbone.Collection.extend({

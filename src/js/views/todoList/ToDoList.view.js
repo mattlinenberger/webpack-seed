@@ -1,10 +1,10 @@
 import LoggableView from '../../modules/LoggableView';
 import ToDo from '../todo/ToDo.view';
 
-const templateMain = require('./SampleView2.handlebars');
+const templateMain = require('./ToDoList.handlebars');
 
 /* bring in the stylesheet */
-require('./SampleView.scss');
+require('./ToDoList.scss');
 
 const SampleView = LoggableView.extend({
   /* bind events */
