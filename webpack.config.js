@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const WebpackCleanPlugin = require('webpack-clean');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const pkg = require('./package.json');
 const metadata = require('./metadata.json');
@@ -31,9 +31,9 @@ module.exports = {
       sourceMap: true,
       mangle: false,
     }),
-    new WebpackCleanPlugin([
+    new CleanWebpackPlugin([
       'dist/',
-    ]),
+    ], {}),
   ],
   /* MODULES */
   module: {

@@ -26,6 +26,7 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.0",
@@ -45,7 +46,6 @@
     "uglify-js": "^3.0.26",
     "url-loader": "^0.5.9",
     "webpack": "^3.3.0",
-    "webpack-clean": "^1.0.0",
     "webpack-dev-server": "^2.6.1"
   }
 }
